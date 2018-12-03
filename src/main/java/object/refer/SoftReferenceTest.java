@@ -2,6 +2,11 @@ package object.refer;
 
 import java.lang.ref.SoftReference;
 
+/**
+ * 为了用代码验证软引用只有在内存不足时才会被回收，需要加jvm参数 -Xmx15m，限制最大内存
+ * 软引用和弱引用的特性基本一致， 主要的区别在于软引用在内存不足时才会被回收。
+ * 如果一个对象只具有软引用，Java GC在内存充足的时候不会回收它，内存不足时才会被回收。
+ */
 public class SoftReferenceTest {
 
 	public static int M = 1024 * 1024;
