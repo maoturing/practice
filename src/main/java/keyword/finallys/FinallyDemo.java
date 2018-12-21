@@ -108,6 +108,7 @@ public class FinallyDemo {
 	}
 
 	/**
+	 * 需要debug调试才能看到return的执行时机
 	 * try中有return(方法结束),会在return之前调用finally块
 	 */
 	@Test
