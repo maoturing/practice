@@ -20,7 +20,7 @@ import org.junit.Test;
  * 
  * @link{https://mp.weixin.qq.com/s/hHO0ChXNynh4d6x3QF-keA}
  */
-
+@SuppressWarnings("all")
 public class FinallyDemo {
 	/**
 	 * 正常情况,try catch执行完后执行finally,若方法未结束,继续向下执行
