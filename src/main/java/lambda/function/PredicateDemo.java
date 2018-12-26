@@ -13,6 +13,7 @@ import java.util.function.Predicate;
  * 可以跳到传递的函数( n -> n % 2 == 0).
  * 这其实就相当于是实现了Predicate接口,重写了test方法,而方法内容就是传递的函数,与匿名类非常类似
  *
+ * eval方法可以看做是Stream.filter的简单实现,只不过我们使用filter时忽略的
  */
 public class PredicateDemo {
     public static void main(String args[]) {
@@ -40,6 +41,7 @@ public class PredicateDemo {
 
         System.out.println("输出大于 3 的所有数字:");
         eval(list, n -> n > 3);
+
     }
 
     public static void eval(List<Integer> list, Predicate<Integer> predicate) {
