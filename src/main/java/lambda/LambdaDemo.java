@@ -3,6 +3,8 @@ package lambda;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -18,4 +20,18 @@ public class LambdaDemo {
         Random random = new Random();
         random.ints().limit(10).forEach(System.out::println);
     }
+
+    /**
+     * 集合转字符串
+     */
+    @Test
+    public void list2String(){
+        List<String> list = new ArrayList<>();
+        list.add("mwq");
+        list.add("mzc");
+        list.add("zj");
+        String result = String.join(", ", list);
+        System.out.println(result);
+    }
+
 }
