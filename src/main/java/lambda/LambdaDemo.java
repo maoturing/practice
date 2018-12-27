@@ -28,10 +28,9 @@ public class LambdaDemo {
     public void list2String(){
         List<String> list = new ArrayList<>();
         list.add("mwq");
-        list.add("mzc");
         list.add("zj");
-        String result = String.join(", ", list);
+        list.add("mzc");
+        String result = String.join(", ", list); // 类似的操作还有stream.collect(Collectors.joining(","))
         System.out.println(result);
     }
-
 }
