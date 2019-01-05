@@ -14,15 +14,15 @@ public class OptionalDemo {
      */
     @Test
     public void testCreate() {
-        Optional<Integer> possible = Optional.empty();  // 返回单例对象
-        Optional<Integer> possible0 = Optional.empty();  // 返回单例对象
-        System.out.println("Optional.empty()是否创建单例对象:" + (possible == possible0));  // true
+        Optional<Integer> opt = Optional.empty();  // 返回单例对象
+        Optional<Integer> opt0 = Optional.empty();  // 返回单例对象
+        System.out.println("Optional.empty()是否创建单例对象:" + (opt == opt0));  // true
 
-        Optional<Integer> possible1 = Optional.of(5);
+        Optional<Integer> opt1 = Optional.of(5);
 
         // 最常的构造Optional方法
-        Optional<Integer> possible2 = Optional.ofNullable(null);
-        Optional<Integer> possible3 = Optional.ofNullable(5);
+        Optional<Integer> opt2 = Optional.ofNullable(null);
+        Optional<Integer> opt3 = Optional.ofNullable(5);
     }
 
     /**
@@ -50,6 +50,11 @@ public class OptionalDemo {
         // 3. 不为null返回,为null抛出异常
         Integer orElseThrow = integerOpt2.orElseThrow(
                 () -> new IllegalArgumentException("cannot be null or blank."));
+
+        // 4. 为null时执行更加复杂的操作,生成返回值
+        Integer result3 = integerOpt2.orElseGet(() -> new Integer(777) );
+        System.out.println(result3);
+
 
     }
 
