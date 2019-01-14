@@ -1,5 +1,7 @@
 package test;
 
+import java.net.URI;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -21,5 +23,11 @@ public class HelloWorld {
         Function<String, Integer> f = s -> s.length();
         list.stream().map(f).collect(Collectors.toList());
 
+        String path = "C:\\Program Files\\WinRAR";
+        String encode = URLEncoder.encode(path);
+        System.out.println(encode);
+        URI.create(encode);
+
     }
+
 }

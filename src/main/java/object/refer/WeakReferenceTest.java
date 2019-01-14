@@ -4,6 +4,8 @@ import java.lang.ref.WeakReference;
 
 /**
  * 如果一个对象只具有弱引用，无论内存充足与否，Java GC后对象如果只有弱引用将会被自动回收。
+ *
+ * 数据保存在WeakReference的referent属性中
  * @author User
  *
  */
