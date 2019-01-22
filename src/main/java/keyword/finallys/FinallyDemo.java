@@ -5,11 +5,12 @@ import org.junit.Test;
 /**
  * 一句话总结:finally必会执行,且会在try catch代码块执行结束前一步执行
  *
+ *
  * 方法结束有3种方式: 
  * 1.代码执行完毕; 
  * 2.执行return语句;
  * 3.抛出异常(被catch住不会使方法结束)
- * 
+ *
  * 
  * 编译器会将finally代码块复制三份:
  * 1.放在try代码块正常执行的出口:如果try没有异常,且try块中有return,则在return前执行finally;
@@ -18,7 +19,8 @@ import org.junit.Test;
  * 
  * 如果finally中出现异常,直接向外抛出
  * 
- * @link{https://mp.weixin.qq.com/s/hHO0ChXNynh4d6x3QF-keA}
+ * 参考文档: https://mp.weixin.qq.com/s/hHO0ChXNynh4d6x3QF-keA
+ * 			《码出高效》
  */
 @SuppressWarnings("all")
 public class FinallyDemo {
@@ -184,4 +186,25 @@ public class FinallyDemo {
 		}
 	}
 
+
+	/**
+	 * finally是在return表达式之后执行的,先将要return的结果保存起来,待finally代码块执行结束后再将之前保存的结果返回
+	 * 查看字节码易知:return的表达式结果存储位置与finally中666的存储位置不一样,最终返回的是return的计算结果
+	 * 参考文档: 《码出高效》
+	 */
+	@Test
+	public void test11() {
+		System.out.println(finallyNotWork());	//101
+	}
+
+	private int finallyNotWork() {
+		int temp = 100;
+		try {
+			throw new Exception();
+		} catch (Exception e) {
+			return ++temp;
+		} finally {
+			temp = 666;
+		}
+	}
 }
