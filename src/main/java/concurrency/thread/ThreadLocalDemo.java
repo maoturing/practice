@@ -92,7 +92,7 @@ public class ThreadLocalDemo {
 
     /**
      * 测试ThreadLocal内存泄漏
-     * 循环中对local重复赋值, 导致当前线程中的threadLocals(THreadLocalMap)中的Entry的key的失去强引用,只剩下Entry的弱引用,
+     * 循环中对local重复赋值, 导致当前线程中的threadLocals(ThreadLocalMap)中的Entry的key的失去强引用,只剩下Entry的弱引用,
      * GC后,可以观察到Entry的key referent为null,已经被回收.
      * 只有value为"aa99"的Entry中的key不为null,因为下面的代码中存在对该ThreadLocal的强引用
      * <p>

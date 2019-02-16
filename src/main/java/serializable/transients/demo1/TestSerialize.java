@@ -47,10 +47,10 @@ public class TestSerialize {
 		list.add("c");
 
 		// 序列化保存到本地
-		NativeSerializeTools.write("D://test.txt", list);
+		NativeSerializeTools.write("D://testDirChanged.txt", list);
 
 		// 反序列化到内存
-		ArrayList<String> newList = (ArrayList<String>) NativeSerializeTools.read("D://test.txt");
+		ArrayList<String> newList = (ArrayList<String>) NativeSerializeTools.read("D://testDirChanged.txt");
 		System.out.println(newList);
 	}
 
