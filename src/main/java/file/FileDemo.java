@@ -55,7 +55,7 @@ public class FileDemo {
                     WatchKey watchKey = watchService.take();
                     List<WatchEvent<?>> watchEvents = watchKey.pollEvents();
                     for(WatchEvent<?> watchEvent : watchEvents){
-                        //TODO 根据事件类型采取不同的操作
+                        // 根据事件类型采取不同的操作
                         System.out.printf("[%s] 文件发生了 [%s] 事件。%n", path+"/"+watchEvent.context(), watchEvent.kind());
                     }
                     // 作用?

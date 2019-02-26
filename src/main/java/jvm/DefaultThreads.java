@@ -12,7 +12,8 @@ import java.lang.management.ThreadMXBean;
  * [4]Signal Dispatcher
  * [5]Attach Listener    提供一种jvm进程间通信的能力，能让一个进程传命令给另外一个进程. 比如jstack [pid]命令就是启动了jstack进程,然后对pid进程进行线程dump.
  *      既然是两个进程，那肯定涉及到进程间通信，以及传输协议的定义，比如要执行什么操作，传了什么参数等
- * [6]Monitor Ctrl-Break
+ * [6]Monitor Ctrl-Break   IDEA下独有,windows下的监听Ctrl+break的守护进程
+ * [7]JDWP Transport Listener: dt_socket   debug模式下才会出现的线程
  *
  * 参考文档: http://lovestblog.cn/blog/2014/06/18/jvm-attach/
  * http://www.cnblogs.com/mymelody/p/5611691.html
