@@ -25,9 +25,8 @@ public class DefaultThreads {
         ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
         ThreadInfo[] threadInfos = threadMXBean.dumpAllThreads(false, false);
         for (ThreadInfo info : threadInfos) {
-
             System.out.println("[" + info.getThreadId() + "]" + info.getThreadName());
         }
-        System.out.println(Thread.activeCount());
+        System.out.println("activeCount:" + Thread.activeCount());
     }
 }
