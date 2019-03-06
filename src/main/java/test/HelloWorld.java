@@ -8,7 +8,5 @@ public class HelloWorld {
 
         Integer integer = new Integer(1);
         System.out.println(integer.compareTo(99));
-
-
     }
 }
