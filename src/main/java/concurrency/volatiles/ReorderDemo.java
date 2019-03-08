@@ -3,21 +3,32 @@ package concurrency.volatiles;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * bobi的代码
  *
- * @author mao
- * create by 2019-3-7 16:24
- **/
-public class ReOrderTest {
+ * 重排序demo
+ *
+ * 参考文档: java并发编程的艺术3.2.4
+ * @author mao  2019-3-8 10:39
+ */
+public class ReorderDemo {
+    int a = 0;
+    boolean flag = false;
+    static int result = 0;
 
-    private static int x = 0, y = 0;
-    private static int a = 0, b = 0;
+    public void write(){
+        a = 1;
+        flag = true;
+    }
+    public void reader(){
+        if(flag){
+            System.out.println(result = a + a);
+        }
+    }
 
     public static void main(String[] args) throws InterruptedException {
         int i = 0;
+        ReorderDemo demo = new ReorderDemo();
         for (; ; ) {
             i++;
-            x = 0; y = 0; a = 0; b = 0;
             CountDownLatch latch = new CountDownLatch(1);
 
             Thread one = new Thread(() -> {
@@ -25,8 +36,7 @@ public class ReOrderTest {
                     latch.await();
                 } catch (InterruptedException e) {
                 }
-                a = 1;
-                x = b;
+                demo.write();
             });
 
             Thread other = new Thread(() -> {
@@ -34,22 +44,16 @@ public class ReOrderTest {
                     latch.await();
                 } catch (InterruptedException e) {
                 }
-                // 下面两句会重排序???
-                b = 1;
-                y = a;
+                demo.reader();
             });
             one.start();
             other.start();
             latch.countDown();
             one.join();
             other.join();
-
-            String result = "第" + i + "次 (a,b)=(" + a + "," + b + ")   ".concat("(x,y)=(" + x + "," + y + ")");
-            if (x == 1 && y == 1) {
-                System.err.println(result);
+            if(result==0){
+                System.err.println("======");
                 break;
-            } else {
-                System.out.println(result);
             }
         }
     }
