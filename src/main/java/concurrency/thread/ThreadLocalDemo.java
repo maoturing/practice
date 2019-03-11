@@ -9,7 +9,7 @@ import java.lang.reflect.Field;
  * Java中的ThreadLocal类允许我们创建只能被同一个线程读写的变量。ThreadLocal中填充的变量属于当前线程，该变量对其他线程而言是隔离的。
  * ThreadLocal将数据保存到ThreadLocalMap中,key为线程,value为set值,
  * <p>
- * 使用场景: SpringMVC中Controller和Service是单例的,全局变量设置为ThreadLocal可以达到线程隔离的作用
+ * 使用场景: SpringMVC中Controller和Service是单例的,成员变量设置为ThreadLocal可以达到线程隔离的作用
  * <p>
  * 参考文档: https://droidyue.com/blog/2016/03/13/learning-threadlocal-in-java/
  * Created by User on 2019/1/7.
@@ -127,6 +127,5 @@ public class ThreadLocalDemo {
         Thread t2 = Thread.currentThread();
         System.out.println(local.get());
         System.out.println("end");
-
     }
 }
