@@ -31,7 +31,8 @@ public class ClassLoadDemo {
         System.out.println("b = " + b);
     }
 
-    final private static int a = 2;
+    private static int a = 2;
+//    final private static int a = 2;
     private int b = 3;
     public static void main(String[] args) {
     }

@@ -13,8 +13,10 @@ public class VolatileDemo {
      * init_value的最大值
      */
     final static int MAX = 5;
-    static int init_value = 0;
-//    volatile static int init_value = 0;
+
+    // 使用volatile测试变量的可见性
+//    static int init_value = 0;
+    volatile static int init_value = 0;
 
     public static void main(String[] args) {
         /**

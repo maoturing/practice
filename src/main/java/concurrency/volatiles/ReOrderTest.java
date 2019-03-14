@@ -7,7 +7,7 @@ import java.util.concurrent.CountDownLatch;
  *
  * @author mao
  * create by 2019-3-7 16:24
- **/
+ */
 public class ReOrderTest {
 
     private static int x = 0, y = 0;
