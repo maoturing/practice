@@ -8,7 +8,6 @@ import java.util.Arrays;
  */
 public class HelloWorld {
     public static void main(String[] args) {
-
         Integer integer = new Integer(1);
         System.out.println(integer.compareTo(99));
 
