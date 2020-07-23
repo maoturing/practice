@@ -96,23 +96,23 @@ public class ThreadLocalDemo {
      * GC后,可以观察到Entry的key referent为null,已经被回收.
      * 只有value为"aa99"的Entry中的key不为null,因为下面的代码中存在对该ThreadLocal的强引用
      * <p>
-     * 什么时候回收key为null的Entry? 博文说会在调用get方法时删除.经过debug,发现无法跳转到getEntryAfterMiss分支
-     * 其实并没有搞清楚
+     * 什么时候删除key为null的Entry? 博文说会在调用get方法时删除.经过debug,发现无法跳转到getEntryAfterMiss分支，为什么？
      *
-     * @throws Exception https://blog.csdn.net/xlgen157387/article/details/78298840
      */
     @Test
     public void testMemLeak() throws Exception {
         ThreadLocal<String> local = null;
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             final int j = i;
             // 正确的使用方法是remove掉再重新赋值,因为remove方法将referent和value都被设置为null,GC就能回收value内存了
             // local.remove();
 
             // 这一步是重新创建了ThreadLocal对象并设置value,赋值给local,也是造成内存泄漏的源头
-            local = ThreadLocal.withInitial(() -> "aa" + j);
+            local = new ThreadLocal<>();
+            local.set("aa"+j);
             System.out.println(local.get());
         }
+        Thread thread = Thread.currentThread();
         System.gc();
         Field field = Thread.class.getDeclaredField("threadLocals");
         field.setAccessible(true);
