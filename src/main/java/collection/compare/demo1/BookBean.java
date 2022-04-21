@@ -1,7 +1,6 @@
 package collection.compare.demo1;
 
-import lombok.Getter;
-import lombok.Setter;
+
 
 import java.io.Serializable;
 
@@ -11,11 +10,26 @@ import java.io.Serializable;
  * @author mao 2019-3-11 11:30:27
  * https://blog.csdn.net/u011240877/article/details/53399019
  */
-@Setter
-@Getter
+
 public class BookBean implements Serializable, Comparable<BookBean> {
     private String name;
     private int count;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 
     public BookBean(String name, int count) {
         this.name = name;
